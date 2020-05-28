@@ -500,6 +500,34 @@ parts:
     prime:
       - bin/juju
 
+  libkrb5-dev:
+    plugin: dump
+    source: http://security.ubuntu.com/ubuntu/pool/main/k/krb5/libkrb5-dev_1.17-6ubuntu4_amd64.deb
+    source-type: deb
+    override-build: |
+      set -eu
+      ARCH=$(dpkg --print-architecture)
+      if ! [ "${ARCH}" = "arm64" ]
+      then
+        snapcraftctl build
+      else
+        echo "Skipped"
+      fi
+
+  unixodbc-dev:
+    plugin: dump
+    source: http://archive.ubuntu.com/ubuntu/pool/main/u/unixodbc/unixodbc_2.3.6-0.1build1.debian.tar.xz
+    source-type: tar
+    override-build: |
+      set -eu
+      ARCH=$(dpkg --print-architecture)
+      if ! [ "${ARCH}" = "arm64" ]
+      then
+        snapcraftctl build
+      else
+        echo "Skipped"
+      fi
+
 slots:
   microk8s:
     interface: content
