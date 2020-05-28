@@ -151,3 +151,11 @@ microk8s-addons:
       supported_architectures:
       - amd64
       - arm64
+
+    - name: "bigdatacluster"
+      description: "Installs Microsoft SQL Server Big Data Clusters"
+      version: "2019-CU4"
+      check_status: ""
+      supported_architectures:
+      - amd64
+      - arm64
